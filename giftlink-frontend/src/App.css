@@ -1,189 +1,452 @@
+/* ==========================================================
+   GiftLink – application styles (loaded after Bootstrap)
+   ========================================================== */
+
+:root {
+  --bs-body-bg: var(--gl-bg);
+  --bs-body-color: var(--gl-text);
+  --bs-border-color: var(--gl-border);
+  --bs-secondary-color: var(--gl-text-muted);
+}
 
 html {
   overflow-y: scroll;
 }
-/* Primary color for headers and important buttons */
-.custom-card-title,
-.btn-primary {
-  background-color: #0056b3; /* Strong, confident blue */
-  color: white; /* For text on primary color background */
-}
 
-/* Secondary color for hover states and highlights */
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #009688; /* Teal */
-}
-
-/* General background color */
 body,
 .page-background {
-  background-color: #f4f4f4; /* Light grey */
-  margin-right: calc(100vw - 100%);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(164, 107, 255, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(255, 107, 139, 0.14), transparent 60%),
+    var(--gl-bg);
+  background-attachment: fixed;
+  color: var(--gl-text);
 }
 
-/* Background color for cards */
-.card {
-  background-color: #ffffff; /* White */
+a {
+  color: var(--gl-accent-1);
 }
 
-/* Text color */
-.card-title,
-.card-text {
-  color: #333333; /* Darker grey */
-}
-
-/* Subtle accent color */
 .text-muted {
-  color: #6c757d; /* Muted grey */
+  color: var(--gl-text-muted) !important;
 }
 
-/* Success color for messages or confirmation */
-.text-success,
-.btn-success {
-  color: #28a745; /* Fresh green */
+.gradient-text {
+  background: var(--gl-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
+/* ---------- Layout ---------- */
 .container {
-  padding: 2rem 15%; /* Adds more space on the sides */
+  max-width: 1180px;
+  padding: 2rem 1.25rem;
 }
 
-.row {
-  justify-content: space-around; /* Adds space between cards */
+.page-header {
+  margin-bottom: 2rem;
+  animation: fadeUp 500ms ease both;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+.page-header p {
+  color: var(--gl-text-muted);
+  margin: 0;
+}
+
+/* ---------- Navbar ---------- */
+.gl-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.85rem 1.5rem;
+  background: rgba(13, 15, 31, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gl-border);
+}
+
+.gl-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--gl-text);
+}
+
+.gl-navbar .navbar-brand img {
+  width: 30px;
+  height: 30px;
+}
+
+.gl-navbar .navbar-toggler {
+  border-color: var(--gl-border);
+  color: var(--gl-text);
+}
+
+.gl-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.gl-navbar .nav-link {
+  color: var(--gl-text-muted);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.45rem 0.9rem !important;
+  border-radius: 999px;
+  transition: color var(--gl-transition), background var(--gl-transition);
+}
+
+.gl-navbar .nav-link:hover {
+  color: var(--gl-text);
+  background: var(--gl-surface);
+}
+
+.gl-navbar .nav-link.active {
+  color: var(--gl-text);
+  background: var(--gl-surface-strong);
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gl-text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+  border-radius: 999px;
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  transition: background var(--gl-transition);
+}
+
+.nav-user:hover {
+  background: var(--gl-surface-strong);
+  color: var(--gl-text);
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--gl-gradient);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  transition: transform var(--gl-transition), box-shadow var(--gl-transition),
+    background var(--gl-transition), opacity var(--gl-transition);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary,
+.btn-primary:focus {
+  background: var(--gl-gradient);
+  border: none;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(255, 107, 139, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--gl-gradient);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--gl-shadow-glow);
+}
+
+.btn-ghost,
+.btn-secondary {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  color: var(--gl-text);
+}
+
+.btn-ghost:hover,
+.btn-secondary:hover {
+  background: var(--gl-surface-strong);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--gl-text);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.login-btn {
+  background: var(--gl-gradient);
+  color: #fff !important;
+}
+
+.logout-btn {
+  color: #ff8fa3 !important;
+}
+
+/* ---------- Cards / product grid ---------- */
+.card {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  border-radius: var(--gl-radius);
+  color: var(--gl-text);
+}
+
+.card-title {
+  color: var(--gl-text);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.card-text {
+  color: var(--gl-text-muted);
 }
 
 .product-card {
-  margin: 1rem 0; /* Adds space above and below each card */
-  border-radius: 10px; /* Rounded corners for card */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  overflow: hidden; /* Ensures nothing spills out of the card's rounded corners */
+  height: 100%;
+  overflow: hidden;
+  box-shadow: var(--gl-shadow);
+  transition: transform var(--gl-transition), box-shadow var(--gl-transition),
+    border-color var(--gl-transition);
+  animation: fadeUp 500ms ease both;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(164, 107, 255, 0.45);
+  box-shadow: var(--gl-shadow-glow);
 }
 
 .image-placeholder {
   width: 100%;
-  height: 200px; /* Fixed height, adjust as needed */
-  position: relative; /* Set a reference for absolute positioned children */
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  background: var(--gl-bg-soft);
 }
 
 .image-placeholder img {
-  position: absolute; /* Position it over the placeholder */
-  top: 0;
-  left: 0;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cover the area without stretching */
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+
+.product-card:hover .image-placeholder img {
+  transform: scale(1.06);
 }
 
 .no-image-available {
   width: 100%;
-  height: 200px; /* Adjust based on your design */
-  background-color: #ddd; /* A neutral background color */
+  height: 210px;
+  background: var(--gl-bg-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  color: #666;
+  font-size: 0.9rem;
+  color: var(--gl-text-muted);
   text-transform: uppercase;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  letter-spacing: 0.08em;
 }
 
-
 .card-body {
-  padding: 1rem;
-  flex-grow: 1; /* Make body grow to fill space */
+  padding: 1.15rem 1.25rem 1.3rem;
+  flex-grow: 1;
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-body .btn {
+  margin-top: auto;
 }
 
 .date-added {
-  margin-top: auto; /* Pushes everything else to the top, and this to the bottom */
+  font-size: 0.85rem;
+  color: var(--gl-text-muted);
+  margin-bottom: 1rem;
 }
 
-.card-footer {
-  padding: 0;
-  border-top: none;
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
-.btn-primary {
-  display: block; /* Disables inline-block default of buttons */
-  width: 100%; /* Full width */
-  box-sizing: border-box; /* Includes padding and border in the width */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--gl-surface-strong);
+  color: var(--gl-text-muted);
+  border: 1px solid var(--gl-border);
 }
-/* Highlight condition and age with color */
+
+/* Condition highlight */
 .list-group-item-success {
-  color: #28a745; /* Green text color for new items */
+  color: var(--gl-accent-3) !important;
+  background: rgba(79, 209, 197, 0.12) !important;
+  border-color: rgba(79, 209, 197, 0.3) !important;
 }
 
 .list-group-item-warning {
-  color: #ffc107; /* Yellow text color for older items */
+  color: var(--gl-gold) !important;
+  background: rgba(255, 197, 107, 0.12) !important;
+  border-color: rgba(255, 197, 107, 0.3) !important;
 }
 
-/* Customize the navbar brand and links */
-.navbar-brand, .nav-link {
-  font-size: 1.2rem; /* Increase font size */
-  font-weight: 500; /* Medium weight for better visibility */
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--gl-border);
+  color: var(--gl-text);
+  border-radius: var(--gl-radius-sm);
+  padding: 0.7rem 0.95rem;
+  transition: border-color var(--gl-transition), box-shadow var(--gl-transition);
 }
 
-/* Increase the font size and weight of nav-item */
-.nav-item .nav-link {
-  font-size: 1.1rem; /* Larger font size for nav links */
-  font-weight: bold; /* Bold font weight for emphasis */
-  color: #0056b3; /* Choose a color that stands out */
+.form-control::placeholder {
+  color: #6f7494;
 }
 
-/* Change the background color of the navbar */
-.navbar {
-  background-color: #f8f9fa; /* A light color for contrast with the text */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--gl-text);
+  border-color: var(--gl-accent-2);
+  box-shadow: 0 0 0 4px rgba(164, 107, 255, 0.18);
 }
 
-/* Add a hover effect to nav links */
-.nav-item .nav-link:hover {
-  color: #004085; /* A darker shade for hover state */
-  text-decoration: none; /* Optional: Removes the underline on hover */
+.form-select option {
+  background: var(--gl-bg-soft);
+  color: var(--gl-text);
 }
 
-/* Highlight the active nav link */
-.nav-item.active .nav-link, .nav-item .nav-link.active {
-  color: #d63384; /* A distinct color for the active page */
-  background-color: transparent; /* Optional: Adds a background color to the active link */
-  text-decoration: underline; /* Underlines the active link */
-  font-weight: bold; /* Makes the active link bold */
+.form-label {
+  color: var(--gl-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-/* Style for login button */
-.nav-link.login-btn {
-  background-color: #28a745; /* A green color for login */
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s ease-in-out;
+.form-range::-webkit-slider-thumb {
+  background: var(--gl-accent-1);
 }
 
-.nav-link.login-btn:hover,
-.nav-link.login-btn:focus {
-  background-color: #218838; /* A darker green on hover/focus for login */
-  color: white;
-  text-decoration: none;
+.form-range::-moz-range-thumb {
+  background: var(--gl-accent-1);
 }
 
-/* Style for logout button */
-.nav-link.logout-btn {
-  background-color: #dc3545; /* A red color for logout */
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s ease-in-out;
+/* ---------- Auth pages ---------- */
+.auth-wrapper {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
 
-.nav-link.logout-btn:hover,
-.nav-link.logout-btn:focus {
-  background-color: #c82333; /* A darker red on hover/focus for logout */
-  color: white;
-  text-decoration: none;
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 2.4rem 2.2rem;
+  background: rgba(20, 23, 43, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gl-border);
+  border-radius: 24px;
+  box-shadow: var(--gl-shadow);
+  animation: fadeUp 500ms ease both;
+}
+
+.auth-card h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.auth-card .subtitle {
+  color: var(--gl-text-muted);
+  margin-bottom: 1.8rem;
+}
+
+.auth-card .switch-link {
+  margin-top: 1.4rem;
+  text-align: center;
+  color: var(--gl-text-muted);
+}
+
+.form-error {
+  color: #ff8fa3;
+  font-size: 0.88rem;
+  min-height: 1.3rem;
+  margin: 0.35rem 0 0.6rem;
+}
+
+/* ---------- Status ---------- */
+.state-message {
+  text-align: center;
+  color: var(--gl-text-muted);
+  padding: 4rem 1rem;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  border: 3px solid var(--gl-border);
+  border-top-color: var(--gl-accent-1);
+  animation: spin 800ms linear infinite;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

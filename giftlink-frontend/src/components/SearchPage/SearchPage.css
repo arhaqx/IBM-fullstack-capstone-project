@@ -1,26 +1,78 @@
+.filter-section {
+    position: sticky;
+    top: 96px;
+    background: rgba(20, 23, 43, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--gl-border);
+    border-radius: var(--gl-radius);
+    box-shadow: var(--gl-shadow);
+    animation: fadeUp 500ms ease both;
+}
+
 /* Task 1: Style the search input field */
 .search-input {
-    /* Insert specific CSS properties here */
+    font-size: 1rem;
 }
 
 /* Task 2: Style the search button */
 .search-button {
-    /* Insert specific CSS properties here */
+    padding: 0.7rem 1.3rem;
 }
 
 /* Task 3: Customize dropdown filters */
 .dropdown-filter {
-    /* Insert specific CSS properties here */
+    cursor: pointer;
 }
 
 /* Task 4: Style the age range slider */
 .age-range-slider {
-    /* Insert specific CSS properties here */
+    accent-color: var(--gl-accent-1);
+}
+
+.age-value {
+    color: var(--gl-accent-1);
+    font-weight: 600;
+}
+
+.results-count {
+    color: var(--gl-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
 }
 
 /* Task 5: Enhance search results cards appearance */
 .search-results-card {
-    /* Insert specific CSS properties here */
+    overflow: hidden;
+    transition: transform var(--gl-transition), border-color var(--gl-transition),
+        box-shadow var(--gl-transition);
+    animation: fadeUp 400ms ease both;
 }
 
-/* Additional placeholders for tasks 6 to 10 */
+.search-results-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(164, 107, 255, 0.45);
+    box-shadow: var(--gl-shadow-glow);
+}
+
+.search-thumb {
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    object-fit: cover;
+}
+
+.empty-results {
+    background: var(--gl-surface);
+    border: 1px dashed var(--gl-border);
+    color: var(--gl-text-muted);
+    border-radius: var(--gl-radius);
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+@media (max-width: 991px) {
+    .filter-section {
+        position: static;
+    }
+}

@@ -1,36 +1,115 @@
+.product-details-card {
+    overflow: hidden;
+    box-shadow: var(--gl-shadow);
+    animation: fadeUp 500ms ease both;
+}
+
 /* Style for image placeholder */
 .image-placeholder-large {
     /* Task 1 styling */
-    {{insert code here}}
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    position: relative;
+    background: var(--gl-bg-soft);
 }
 
 /* Style for product image */
 .product-image-large {
     /* Task 2 styling */
-    {{insert code here}}
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Style for 'no image available' placeholder */
 .no-image-available-large {
     /* Task 3 styling */
-    {{insert code here}}
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gl-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 /* Style for card header */
 .card-header {
     /* Task 4 styling */
-    {{insert code here}}
+    background: transparent;
+    border-bottom: 1px solid var(--gl-border);
+    padding: 1.6rem 1.75rem 1.1rem;
 }
 
 /* Style for details title */
 .details-title {
     /* Task 5 styling */
-    {{insert code here}}
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    background: var(--gl-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.details-body {
+    padding: 1.4rem 1.75rem 1.8rem;
+}
+
+.details-body p {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+    color: var(--gl-text);
+    line-height: 1.6;
+}
+
+.details-body strong {
+    min-width: 120px;
+    color: var(--gl-text-muted);
+    font-weight: 500;
 }
 
 /* Style for comments section */
 .comments-section {
     /* Task 6 styling */
-    {{insert code here}}
+    padding: 1.75rem;
+    border-radius: var(--gl-radius);
+    background: var(--gl-surface);
+    border: 1px solid var(--gl-border);
 }
 
+.comments-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.comment-card {
+    background: rgba(255, 255, 255, 0.03);
+    transition: border-color var(--gl-transition), transform var(--gl-transition);
+}
+
+.comment-card:hover {
+    border-color: rgba(255, 107, 139, 0.4);
+    transform: translateX(4px);
+}
+
+.comment-card:last-child {
+    margin-bottom: 0 !important;
+}
+
+.comment-author {
+    margin-bottom: 0.2rem;
+    color: var(--gl-accent-1);
+}
+
+.comment-text {
+    margin: 0;
+    color: var(--gl-text);
+}
